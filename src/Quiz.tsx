@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import quizData from './data/quizData.ts';
+import quizData from './data/quizData';
 import './Quiz.css';
 
 interface QuizProps {}

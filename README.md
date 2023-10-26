@@ -1,27 +1,12 @@
 # Lab 8: Introduction to React.js
 
-React is a declarative, efficient, and flexible JavaScript library for building interactive and dynamic user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”.In this lab, students will learn the fundamentals of React.js and create an interactive quiz application.
+In this lab, students will learn the fundamentals of React.js and create an interactive quiz application.
 
-## Deliverables
-- [ ] Modify the implementation to retrieves questions and answer options from an external quizData file and correctly displays them in the quiz interface.
-- [ ] Enhance the user interface to indicate the selected answer, providing a more visually appealing user experience
-- [ ] Extend the Quiz component to record user choices and display the total score of the selected options when the "Submit" button is pressed
+### Task 1: Load Quiz Data
+Solution: This solution demonstrates how to load quiz data from an external file (quizData.ts) and set it in the component's state. The student needs to complete method **loadQuizData** in Quiz.tsx
 
-## Instructions
-Clone the Quiz App repository from: https://github.com/CMU-17-214/f22-rec09
-Refer to the README’s of the projects therein for set up instructions. After you run the program, you will be able to see a simple quiz GUI from the link http://localhost:3000/.
+### Task 2: Enhance User Experience
+Solution: This solution focuses on enhancing the user experience by visually highlighting the selected answer. One possible solution is **.selected{...}** in Quiz.css
 
-In this starter code, you are provided with a Quiz class component.
-The initial state includes a sample question, answer options, and a selectedAnswer value.
-The handleOptionSelect function allows selecting an answer option and updates the selectedAnswer in the component's state.
-The render method displays the question, answer options, and the selected answer.
-
-### Display Quiz Questions 
-In the starter code, you'll notice that the question and answer options are currently hardcoded within the Quiz component. To make the application more flexible, the first task is to modify the Quiz component to retrieve questions and answer options from an external quizData file. The file quizData.js is provided at front-end/src/data/quizData.ts, and your goal is to read and render questions and answer options from this file.
-
-### Enhance User Experience
-The starter code directly displays the user's current selection. Your task is to enhance the user experience by making is more visually appealing. One way is to highlight the selected option. When a user clicks on an answer, it should be visually highlighted.
-You have the creative freedom to improve the user interface. Find your own way to make it more intuitive.
-
-### Manage User Interaction and Scoring
-In the current implementation, the correctness of users' options are not stored and displayed when the "Submit" button is clicked. In this task, you will modify the Quiz component to store the value of each selected option and display total score of the selected options when the "Submit" button is pressed.
+###  Task 3: Manage User Interaction and Scoring
+Solution: This solution illustrates how to manage user interaction and scoring in the quiz application. The reference solution is an example of recording the user's choice, comparing it with the correct answer, and updating the feedback that reflects correct and incorrect selections.
