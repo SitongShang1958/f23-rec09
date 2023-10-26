@@ -14,6 +14,7 @@ Clone the Quiz App repository from: https://github.com/CMU-17-214/f22-rec09 and 
 npm install
 npm start
 ```
+![Local Image](src/image/starterPic.png)
 
 This will start the front-end server at http://localhost:3000. You can update the front-end code as the server is running in the development mode (i.e., npm start). It will automatically recompile and reload.
 To set up, run . After you run the program, you will be able to see a simple quiz GUI from the link http://localhost:3000/.
