@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import quizData from './data/quizData.ts';
 import './Quiz.css';
 
 interface QuizProps {}
@@ -8,7 +7,6 @@ interface QuizState {
     question: string;
     options: string[];
     selectedAnswer: string | null;
-    feedback: string; // task3
 }
 
 class Quiz extends Component<QuizProps, QuizState> {
@@ -18,7 +16,6 @@ class Quiz extends Component<QuizProps, QuizState> {
             question: 'What is the capital of France?',
             options: ['London', 'Berlin', 'Paris', 'Madrid'],
             selectedAnswer: null,
-            feedback: 'not submitted yet', //task3
         };
     }
 
@@ -26,33 +23,16 @@ class Quiz extends Component<QuizProps, QuizState> {
         this.setState({ selectedAnswer: option });
     }
 
-    // Task 1
+    // Task 1: Load quiz data from quizData.ts and set it in the component state
     loadQuizData = () => {
-        // Load quiz data from quizData.ts and update the state
-        const loadedData = quizData; // Use the imported quizData here
-        // Extract the first question and options
-        const firstQuestion = loadedData[0];
-        this.setState({
-            question: firstQuestion.question,
-            options: firstQuestion.options,
-        });
+        // Fetch quiz data from quizData.ts and update the state
+        // Hint: You can use this.setState() to update the question and options
     }
 
     // Task 3: Manage User Interaction and Scoring
     recordUserChoice = () => {
-        const { selectedAnswer, question } = this.state;
-        const correctAnswer = quizData.find((q) => q.question === question)?.correctAnswer;
-      
-        if (selectedAnswer === correctAnswer) {
-            // If the selected answer is correct, update the score
-            this.setState({
-                feedback: 'Correct'
-            });
-        } else {
-            this.setState({
-                feedback: 'Incorrect'
-            });
-        }
+        // Implement code to record the user's choice and update the score
+        // Hint: Compare the selected answer with the correct answer and update the score
     }
 
     componentDidMount() {
@@ -62,7 +42,7 @@ class Quiz extends Component<QuizProps, QuizState> {
 
 
     render() {
-        const { question, options, selectedAnswer, feedback } = this.state;
+        const { question, options, selectedAnswer } = this.state;
 
         return (
         <div>
@@ -86,7 +66,7 @@ class Quiz extends Component<QuizProps, QuizState> {
             <p>{selectedAnswer || 'No answer selected'}</p>
 
             <button onClick={this.recordUserChoice}>Submit</button> {/* Add this button */}
-            <p>Feedback: {feedback}</p>
+            <p>Score: {/*add the score value to show correct/wrong*/}</p>
         </div>
         );
     }
