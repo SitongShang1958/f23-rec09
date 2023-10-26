@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import Quiz from './Quiz.tsx';
+import React, { Component } from 'react'
+import Quiz from './Quiz.tsx'
 
 class App extends Component {
-  render() {
+  render (): React.ReactNode {
     return (
-      <div className="App">
+      <div className='App'>
         <h1>My React Quiz</h1>
         <Quiz />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
