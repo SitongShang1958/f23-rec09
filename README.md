@@ -8,8 +8,15 @@ React is a declarative, efficient, and flexible JavaScript library for building 
 - [ ] Extend the Quiz component to record user choices and display the total score of the selected options when the "Submit" button is pressed
 
 ## Instructions
-Clone the Quiz App repository from: https://github.com/CMU-17-214/f22-rec09
-Refer to the README’s of the projects therein for set up instructions. After you run the program, you will be able to see a simple quiz GUI from the link http://localhost:3000/.
+Clone the Quiz App repository from: https://github.com/CMU-17-214/f22-rec09 and run
+
+```
+npm install
+npm start
+```
+
+This will start the front-end server at http://localhost:3000. You can update the front-end code as the server is running in the development mode (i.e., npm start). It will automatically recompile and reload.
+To set up, run . After you run the program, you will be able to see a simple quiz GUI from the link http://localhost:3000/.
 
 In this starter code, you are provided with a Quiz class component.
 The initial state includes a sample question, answer options, and a selectedAnswer value.
