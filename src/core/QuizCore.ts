@@ -1,26 +1,28 @@
-import fs from 'fs';
-import csv from 'csv-parser';
+import quizData from '../data/quizData';
 import QuizQuestion from './QuizQuestion';
 
-class Quiz {
+/**
+ * The `QuizCore` class represents the core logic for managing a quiz, including
+ * maintaining the quiz questions, tracking the user's progress, and calculating
+ * their score.
+ * 
+ * It provides methods for navigating through the quiz, answering questions,
+ * and retrieving information about the current state of the quiz.
+ */
+class QuizCore {
   private questions: QuizQuestion[];
   private currentQuestionIndex: number;
   private score: number;
 
   /**
    * Constructor
-   * @param filePath - The file path to a CSV file containing quiz data.
+   * @param filePath - The file path to a JSON file containing quiz data.
    * @param callback - A callback function called when the quiz data is loaded.
    */
-  constructor(filePath: string, callback: (quiz: Quiz) => void) {
-    // Initializes the quiz by loading data from the provided CSV file.
-    this.questions = [];
+  constructor() {
+    this.questions = quizData;
     this.currentQuestionIndex = 0;
     this.score = 0;
-
-    this.loadQuizData(filePath, () => {
-      callback(this);
-    });
   }
 
   /**
@@ -38,10 +40,17 @@ class Quiz {
   /**
    * Move to the next question.
    */
-  public nextQuestion(): void {
-    if (this.currentQuestionIndex < this.questions.length - 1) {
-      this.currentQuestionIndex++;
-    }
+  public nextQuestion(): void {      
+    this.currentQuestionIndex++;
+  }
+
+  /**
+   * Checks if there is a next question available in the quiz.
+   *
+   * @returns {boolean} True if there is a next question, false if the quiz has been completed.
+   */
+  public hasNextQuestion(): boolean {
+    return this.currentQuestionIndex < this.questions.length - 1;
   }
 
   /**
@@ -64,22 +73,6 @@ class Quiz {
     return this.score;
   }
 
-  private loadQuizData(filePath: string, callback: () => void): void {
-    fs.createReadStream(filePath)
-      .pipe(csv())
-      .on('data', (row) => {
-        const quizQuestion: QuizQuestion = {
-          question: row.question,
-          options: row.options.split(','),
-          correctAnswer: row.correctAnswer,
-        };
-        this.questions.push(quizQuestion);
-      })
-      .on('end', () => {
-        console.log('Quiz data loaded.');
-        callback();
-      });
-  }
 }
 
-export default Quiz;
+export default QuizCore;

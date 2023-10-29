@@ -1,7 +1,7 @@
 type QuizQuestion = {
-    question: string;
-    options: string[];
-    correctAnswer: string;
-  };
-  
-  export default QuizQuestion;
+  question: string;
+  options: string[];
+  correctAnswer: string;
+};
+
+export default QuizQuestion;

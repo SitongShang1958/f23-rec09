@@ -7,7 +7,6 @@ interface QuizState {
   currentQuestionIndex: number
   selectedAnswer: string | null
   score: number
-  submitted: boolean
 }
 
 class Quiz extends Component<{}, QuizState> {
@@ -21,10 +20,9 @@ class Quiz extends Component<{}, QuizState> {
           correctAnswer: 'Paris',
         },
       ],
-      currentQuestionIndex: 0,
-      selectedAnswer: null,
-      score: 0,
-      submitted: false
+      currentQuestionIndex: 0, // Initialize the current question index.
+      selectedAnswer: null, // Initialize the selected answer.
+      score: 0, // Initialize the score.
     };
   }
 
@@ -32,31 +30,18 @@ class Quiz extends Component<{}, QuizState> {
     this.setState({ selectedAnswer: option })
   }
 
-  // Task 1: Load quiz data from quizData.ts and set it in the component state
-  loadQuizData = (): void => {
-    // Fetch quiz data from quizData.ts and update the state
-    // Hint: You can use this.setState() to update the question and options
-  }
 
-  handleSubmit = (): void => {
-    this.setState({ submitted: true })
-  }
-
-  handleMoveNext = (): void => {
-  }
-
-  componentDidMount (): void {
-    // Load quiz data when the component mounts (Task 1)
-    this.loadQuizData()
-  }
+  handleButtonClick = (): void => {
+    // Task3: Implement the logic for button click, such as moving to the next question.
+  } 
 
   render (): React.ReactNode {
-    const { questions, currentQuestionIndex, selectedAnswer, score, submitted } = this.state;
+    const { questions, currentQuestionIndex, selectedAnswer, score } = this.state;
     const currentQuestion = questions[currentQuestionIndex];
 
-    if (!currentQuestion || submitted) {
-      // All questions have been answered
+    if (!currentQuestion) {
       return (
+        // Display the quiz completion message and final score when all questions have been answered.
         <div>
           <h2>Quiz Completed</h2>
           <p>Final Score: {score} out of {questions.length}</p>
@@ -85,8 +70,7 @@ class Quiz extends Component<{}, QuizState> {
         <h3>Selected Answer:</h3>
         <p>{selectedAnswer ?? 'No answer selected'}</p>
 
-        <button onClick={this.handleMoveNext}>Next Question</button>
-        <button onClick={this.handleSubmit}>Submit</button> {/* Add this button */}
+        <button onClick={this.handleButtonClick}>Next Question</button>
       </div>
     )
   }
